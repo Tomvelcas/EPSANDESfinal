@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "f584077a-cc2a-46ee-83a5-e906a944c187",
+		"_postman_id": "1f24f0e3-ee8e-450f-8d94-361cb4efb78b",
 		"name": "EPSANDES API",
 		"description": "Colección de pruebas para EPSANDES - Sistemas Transaccionales",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "41579249"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38428262"
 	},
 	"item": [
 		{
@@ -26,18 +26,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/ips",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"ips"
-					]
-				}
+				"url": "http://localhost:8080/api/ips"
 			},
 			"response": []
 		},
@@ -60,18 +49,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/servicios",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"servicios"
-					]
-				}
+				"url": "http://localhost:8080/api/servicios"
 			},
 			"response": []
 		},
@@ -80,21 +58,7 @@
 			"request": {
 				"method": "POST",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/servicios/999/ips/9999999999",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"servicios",
-						"999",
-						"ips",
-						"9999999999"
-					]
-				}
+				"url": "http://localhost:8080/api/servicios/999/ips/9999999999"
 			},
 			"response": []
 		},
@@ -117,18 +81,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/medicos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"medicos"
-					]
-				}
+				"url": "http://localhost:8080/api/medicos"
 			},
 			"response": []
 		},
@@ -151,18 +104,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/afiliados",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"afiliados"
-					]
-				}
+				"url": "http://localhost:8080/api/afiliados"
 			},
 			"response": []
 		},
@@ -185,18 +127,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/ordenes",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"ordenes"
-					]
-				}
+				"url": "http://localhost:8080/api/ordenes"
 			},
 			"response": []
 		},
@@ -205,20 +136,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/citas/disponibilidad/771",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"citas",
-						"disponibilidad",
-						"771"
-					]
-				}
+				"url": "http://localhost:8080/api/citas/disponibilidad/771"
 			},
 			"response": []
 		},
@@ -241,19 +159,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/citas/general",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"citas",
-						"general"
-					]
-				}
+				"url": "http://localhost:8080/api/citas/general"
 			},
 			"response": []
 		},
@@ -290,20 +196,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/citas/disponibilidad/999",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"citas",
-						"disponibilidad",
-						"999"
-					]
-				}
+				"url": "http://localhost:8080/api/citas/disponibilidad/999"
 			},
 			"response": []
 		},
@@ -352,8 +245,29 @@
 						}
 					}
 				},
+				"url": "http://localhost:8080/api/citas/agendar"
+			},
+			"response": []
+		},
+		{
+			"name": "RFC5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:8080/api/citas/agendar",
+					"raw": "http://localhost:8080/api/citas/disponibilidad/serializable?servicioId=999&medicoId=8888888888&fechaInicio=2025-05-01%2008:00:00&fechaFin=2025-06-07%2018:00:00",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -362,7 +276,66 @@
 					"path": [
 						"api",
 						"citas",
-						"agendar"
+						"disponibilidad",
+						"serializable"
+					],
+					"query": [
+						{
+							"key": "servicioId",
+							"value": "999"
+						},
+						{
+							"key": "medicoId",
+							"value": "8888888888"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "2025-05-01%2008:00:00"
+						},
+						{
+							"key": "fechaFin",
+							"value": "2025-06-07%2018:00:00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RFC6",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/citas/disponibilidad/read-committed?servicioId=999&medicoId=8888888888&fechaInicio=2025-05-01%2008:00:00&fechaFin=2025-06-07%2018:00:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"citas",
+						"disponibilidad",
+						"read-committed"
+					],
+					"query": [
+						{
+							"key": "servicioId",
+							"value": "999"
+						},
+						{
+							"key": "medicoId",
+							"value": "8888888888"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "2025-05-01%2008:00:00"
+						},
+						{
+							"key": "fechaFin",
+							"value": "2025-06-07%2018:00:00"
+						}
 					]
 				}
 			},

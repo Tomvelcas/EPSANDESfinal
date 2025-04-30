@@ -1,12 +1,13 @@
 package uniandes.edu.co.epsandes.repositorio;
-import uniandes.edu.co.epsandes.modelo.AgendarCita;
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import uniandes.edu.co.epsandes.modelo.AgendarCita;
 
 @Repository
 public interface AgendarCitaRepository extends JpaRepository<AgendarCita, Long> {
@@ -43,4 +44,18 @@ public interface AgendarCitaRepository extends JpaRepository<AgendarCita, Long> 
         "AND ac.FECHA_HORA = fechas.fecha_base + (horas.hora/24))", 
         nativeQuery = true)
     List<Object[]> findDisponibilidadServicio(@Param("servicioId") Long servicioId);
+    
+    // Buscar disponibilidad de citas para un servicio en un rango de fechas específico
+    @Query(value = "SELECT ac.IDCITA, ac.FECHA_HORA, m.NOMBRE, s.NOMBRE " +
+              "FROM AGENDARCITA ac " +
+              "JOIN MEDICO m ON ac.MEDICO_NUMERODOCUMENTO = m.NUMERODOCUMENTO " +
+              "JOIN SERVICIODESALUD s ON ac.SERVICIODESALUD_ID = s.ID_SERVICIO " +
+              "WHERE ac.SERVICIODESALUD_ID = :servicioId " +
+              "AND ac.MEDICO_NUMERODOCUMENTO = :medicoId " +
+              "AND TO_CHAR(ac.FECHA_HORA, 'YYYY-MM-DD HH24:MI:SS') BETWEEN :fechaInicio AND :fechaFin", 
+        nativeQuery = true)
+    List<Object[]> findDisponibilidadServicioTransaccional(@Param("servicioId") Long servicioId, 
+                                        @Param("medicoId") Long medicoId, 
+                                        @Param("fechaInicio") String fechaInicio, 
+                                        @Param("fechaFin") String fechaFin);
 }

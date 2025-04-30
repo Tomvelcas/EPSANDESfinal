@@ -1,6 +1,11 @@
 package uniandes.edu.co.epsandes.servicio;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -20,12 +25,6 @@ import uniandes.edu.co.epsandes.repositorio.MedicoRepository;
 import uniandes.edu.co.epsandes.repositorio.OrdenDeServicioRepository;
 import uniandes.edu.co.epsandes.repositorio.PrestacionServicioRepository;
 import uniandes.edu.co.epsandes.repositorio.ServicioDeSaludRepository;
-
-import java.util.List;
-import java.util.Optional;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Service
 public class AgendarCitaService {
@@ -218,24 +217,24 @@ public class AgendarCitaService {
     }
 
     @Transactional(readOnly = true, isolation = Isolation.SERIALIZABLE)
-    public List<Object[]> DisponibilidadServicio(Long servicioId){
-        try {
-            Thread.sleep(30000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException("Thread was interrupted", e);
-        }
-        return citaRepository.findDisponibilidadServicio(servicioId);
+    public List<Object[]> DisponibilidadServicio(Long servicioId, Long medicoId, String fechaInicio, String fechaFin) {
+    try {
+        Thread.sleep(30000);
+    } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
+        throw new RuntimeException("Thread was interrupted", e);
+    }
+    return citaRepository.findDisponibilidadServicioTransaccional(servicioId, medicoId, fechaInicio, fechaFin);
     }
 
     @Transactional(readOnly = true, isolation = Isolation.READ_COMMITTED)
-    public List<Object[]> DisponibilidadServicioRead(Long servicioId){
+    public List<Object[]> DisponibilidadServicioRead(Long servicioId, Long medicoId, String fechaInicio, String fechaFin) {
         try {
             Thread.sleep(30000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             throw new RuntimeException("Thread was interrupted", e);
         }
-        return citaRepository.findDisponibilidadServicio(servicioId);
+        return citaRepository.findDisponibilidadServicioTransaccional(servicioId, medicoId, fechaInicio, fechaFin);
     }
 }
