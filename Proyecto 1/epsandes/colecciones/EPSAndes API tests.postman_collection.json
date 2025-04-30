@@ -1,0 +1,233 @@
+{
+	"info": {
+	  "name": "EPSANDES API",
+	  "description": "Colección de pruebas para EPSANDES - Sistemas Transaccionales",
+	  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+	  {
+		"name": "RF1 - Registrar IPS",
+		"request": {
+		  "method": "POST",
+		  "header": [
+			{
+			  "key": "Content-Type",
+			  "value": "application/json"
+			}
+		  ],
+		  "body": {
+			"mode": "raw",
+			"raw": "{\n  \"nit\": 9999999999,\n  \"nombre\": \"IPS Nueva Prueba\",\n  \"direccion\": \"Calle 200 #50-60\",\n  \"telefono\": \"6019876543\"\n}"
+		  },
+		  "url": {
+			"raw": "http://localhost:8080/api/ips",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["api", "ips"]
+		  }
+		}
+	  },
+	  {
+		"name": "RF2 - Registrar Servicio de Salud",
+		"request": {
+		  "method": "POST",
+		  "header": [
+			{
+			  "key": "Content-Type",
+			  "value": "application/json"
+			}
+		  ],
+		  "body": {
+			"mode": "raw",
+			"raw": "{\n  \"idServicio\": 999,\n  \"nombre\": \"Servicio Prueba\",\n  \"descripcion\": \"Servicio de prueba para test\",\n  \"tipo\": \"CONSULTA_GENERAL\"\n}"
+		  },
+		  "url": {
+			"raw": "http://localhost:8080/api/servicios",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["api", "servicios"]
+		  }
+		}
+	  },
+	  {
+		"name": "RF3 - Asignar Servicio a IPS",
+		"request": {
+		  "method": "POST",
+		  "header": [],
+		  "url": {
+			"raw": "http://localhost:8080/api/servicios/999/ips/9999999999",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["api", "servicios", "999", "ips", "9999999999"]
+		  }
+		}
+	  },
+	  {
+		"name": "RF4 - Registrar Médico",
+		"request": {
+		  "method": "POST",
+		  "header": [
+			{
+			  "key": "Content-Type",
+			  "value": "application/json"
+			}
+		  ],
+		  "body": {
+			"mode": "raw",
+			"raw": "{\n  \"numeroDocumento\": 8888888888,\n  \"nombre\": \"Dr. Prueba Nuevo\",\n  \"tipoDocumento\": \"CC\",\n  \"numeroRegistroMedico\": 88888,\n  \"especialidad\": \"Medicina General\",\n  \"ips\": {\n    \"nit\": 9999999999\n  }\n}"
+		  },
+		  "url": {
+			"raw": "http://localhost:8080/api/medicos",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["api", "medicos"]
+		  }
+		}
+	  },
+	  {
+		"name": "RF5 - Registrar Afiliado (Contribuyente)",
+		"request": {
+		  "method": "POST",
+		  "header": [
+			{
+			  "key": "Content-Type",
+			  "value": "application/json"
+			}
+		  ],
+		  "body": {
+			"mode": "raw",
+			"raw": "{\n  \"numeroDocumento\": 7777777777,\n  \"tipoDocumento\": \"CC\",\n  \"nombre\": \"Afiliado Prueba\",\n  \"fechaNacimiento\": \"1990-01-01\",\n  \"direccion\": \"Calle Test #1-2\",\n  \"telefono\": \"3001234567\",\n  \"tipoAfiliado\": \"CONTRIBUYENTE\"\n}"
+		  },
+		  "url": {
+			"raw": "http://localhost:8080/api/afiliados",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["api", "afiliados"]
+		  }
+		}
+	  },
+	  {
+		"name": "RF6 - Registrar Orden de Servicio",
+		"request": {
+		  "method": "POST",
+		  "header": [
+			{
+			  "key": "Content-Type",
+			  "value": "application/json"
+			}
+		  ],
+		  "body": {
+			"mode": "raw",
+			"raw": "{\n  \"idOrden\": 9999,\n  \"medico\": {\n    \"numeroDocumento\": 8888888888\n  },\n  \"afiliado\": {\n    \"numeroDocumento\": 7777777777\n  }\n}"
+		  },
+		  "url": {
+			"raw": "http://localhost:8080/api/ordenes",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["api", "ordenes"]
+		  }
+		}
+	  },
+	  {
+		"name": "RF7.1 - Consultar Disponibilidad",
+		"request": {
+		  "method": "GET",
+		  "header": [],
+		  "url": {
+			"raw": "http://localhost:8080/api/citas/disponibilidad/999",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["api", "citas", "disponibilidad", "999"]
+		  }
+		}
+	  },
+	  {
+		"name": "RF7.2 - Agendar Cita",
+		"request": {
+		  "method": "POST",
+		  "header": [
+			{
+			  "key": "Content-Type",
+			  "value": "application/json"
+			}
+		  ],
+		  "body": {
+			"mode": "raw",
+			"raw": "{\n  \"idCita\": 9999,\n  \"fechaHora\": \"2025-05-01T08:00:00\",\n  \"afiliado\": {\n    \"numeroDocumento\": 7777777777\n  },\n  \"medico\": {\n    \"numeroDocumento\": 8888888888\n  },\n  \"servicioDeSalud\": {\n    \"idServicio\": 999\n  }\n}"
+		  },
+		  "url": {
+			"raw": "http://localhost:8080/api/citas",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["api", "citas"]
+		  }
+		}
+	  },
+	  {
+		"name": "RF8 - Registrar Prestación de Servicio",
+		"request": {
+		  "method": "POST",
+		  "header": [],
+		  "url": {
+			"raw": "http://localhost:8080/api/citas/9999/prestacion?ipsNit=9999999999",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["api", "citas", "9999", "prestacion"],
+			"query": [
+			  {
+				"key": "ipsNit",
+				"value": "9999999999"
+			  }
+			]
+		  }
+		}
+	  },
+	  {
+		"name": "RFC1 - Consultar Agenda Disponibilidad",
+		"request": {
+		  "method": "GET",
+		  "header": [],
+		  "url": {
+			"raw": "http://localhost:8080/api/citas/disponibilidad/999",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["api", "citas", "disponibilidad", "999"]
+		  }
+		}
+	  },
+	  {
+		"name": "RFC2 - Servicios Más Solicitados",
+		"request": {
+		  "method": "GET",
+		  "header": [],
+		  "url": {
+			"raw": "http://localhost:8080/api/servicios/mas-solicitados?fechaInicio=2025-01-01&fechaFin=2025-12-31",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["api", "servicios", "mas-solicitados"],
+			"query": [
+			  {
+				"key": "fechaInicio",
+				"value": "2025-01-01"
+			  },
+			  {
+				"key": "fechaFin",
+				"value": "2025-12-31"
+			  }
+			]
+		  }
+		}
+	  }
+	]
+  }
