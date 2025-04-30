@@ -63,7 +63,6 @@ public class AgendarCitaService {
     }
     
     // RF7.2 - Agendar un servicio de salud
-    @Transactional
     public AgendarCita agendarServicio(AgendarCita cita) {
         logger.debug("Intentando agendar cita: {}", cita);
         // Verificar si ya existe una cita con el mismo ID
