@@ -234,7 +234,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"idCita\": 5557,\n  \"fechaHora\": \"2025-05-02T08:00:00\",\n  \"afiliado\": {\n    \"numeroDocumento\": 7777777776\n  },\n  \"medico\": {\n    \"numeroDocumento\": 8880000000\n  },\n  \"servicioDeSalud\": {\n    \"idServicio\": 922\n  }\n}",
+					"raw": "{\n  \"idCita\": 5987,\n  \"fechaHora\": \"2025-05-02T15:00:00\",\n  \"afiliado\": {\n    \"numeroDocumento\": 7777777776\n  },\n  \"medico\": {\n    \"numeroDocumento\": 1248888888\n  },\n  \"servicioDeSalud\": {\n    \"idServicio\": 771\n  }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -242,7 +242,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/citas",
+					"raw": "http://localhost:8080/api/citas/general",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -250,7 +250,8 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"citas"
+						"citas",
+						"general"
 					]
 				}
 			},
@@ -340,8 +341,30 @@
 		{
 			"name": "RF9",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"idCita\": 4987,\r\n  \"fechaHora\": \"2025-05-20T16:00:00\",  \r\n  \"afiliado\": {\r\n    \"numeroDocumento\": 7777777776\r\n  },\r\n  \"medico\": {\r\n    \"numeroDocumento\": 1248888888\r\n  },\r\n  \"servicioDeSalud\": {\r\n    \"idServicio\": 771\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/citas/agendar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"citas",
+						"agendar"
+					]
+				}
 			},
 			"response": []
 		}
